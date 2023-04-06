@@ -9,31 +9,26 @@
   <script
     crossorigin
     src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
     const root = document.getElementById('root');
-    const h3 = React.createElement(
-      'h3',
-      {
-        id: 'title',
-        onMouseEnter: () => {
+    const H3 = (
+      <h3
+        id="title"
+        onMouseEnter={() => {
           console.log('Mouse enter');
-        },
-      },
-      'Total clicks: 0'
+        }}>
+        I'm a title
+      </h3>
     );
-    const btn = React.createElement(
-      'button',
-      {
-        style: { backgroundColor: 'red' },
-        onClick: () => {
-          console.log('Clicked!');
-          console.log('Clicked!2');
-        },
-      },
-      'Click me'
+    const Button = (
+      <button
+        style={{ backgroundColor: 'tomato' }}
+        onClick={() => console.log("I'm Clicked")}>
+        Click me
+      </button>
     );
-    const container = React.createElement('div', null, [h3, btn]);
-
+    const container = React.createElement('div', null, [H3, Button]);
     ReactDOM.render(container, root);
   </script>
 </html>
