@@ -11,11 +11,29 @@
     src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script>
     const root = document.getElementById('root');
-    const span = React.createElement(
-      'span',
-      { id: 'sexy-span', style: { color: 'red' } },
+    const h3 = React.createElement(
+      'h3',
+      {
+        id: 'title',
+        onMouseEnter: () => {
+          console.log('Mouse enter');
+        },
+      },
       'Total clicks: 0'
     );
-    ReactDOM.render(span, root);
+    const btn = React.createElement(
+      'button',
+      {
+        style: { backgroundColor: 'red' },
+        onClick: () => {
+          console.log('Clicked!');
+          console.log('Clicked!2');
+        },
+      },
+      'Click me'
+    );
+    const container = React.createElement('div', null, [h3, btn]);
+
+    ReactDOM.render(container, root);
   </script>
 </html>
