@@ -12,7 +12,7 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     const root = document.getElementById('root');
-    const App = () => {
+    const MinutesToHours = () => {
       const [minutes, setMinutes] = React.useState(0);
       const [hours, setHours] = React.useState(0);
       const [flipped, setFlipped] = React.useState(false);
@@ -37,9 +37,9 @@
 
       return (
         <div>
-          <h1 className="hi">Super Converter</h1>
+          <h3>Minutes to Hours</h3>
           <div>
-            <label htmlFor="minutes">Minutes</label>
+            <label htmlFor="minutes">Minutes : </label>
             <input
               value={minutes}
               id="minutes"
@@ -51,7 +51,7 @@
             />
           </div>
           <div>
-            <label htmlFor="hours">Hours</label>
+            <label htmlFor="hours">Hours : </label>
             <input
               value={hours}
               id="hours"
@@ -63,7 +63,35 @@
             />
           </div>
           <button onClick={reset}>Reset</button>
-          <button onClick={onFlip}>Flip</button>
+          <button onClick={onFlip}>
+            {flipped ? 'Min to Hr' : 'Hr to Min'}
+          </button>
+        </div>
+      );
+    };
+    const KmToMiles = () => {
+      return <h3>Km to Miles</h3>;
+    };
+    const App = () => {
+      const [index, setIndex] = React.useState('0');
+      const onSelect = (event) => {
+        console.log(event.target.value);
+        console.log(event.target.value.type);
+        setIndex(event.target.value);
+      };
+      console.log(index);
+      return (
+        <div>
+          <h1 className="hi">Super Converter</h1>
+          <hr />
+          <select
+            value={index}
+            onChange={onSelect}>
+            <option value="0">Minutes & Hours</option>
+            <option value="1">Km & Miles</option>
+          </select>
+
+          {index === '0' ? <MinutesToHours /> : <KmToMiles />}
         </div>
       );
     };
